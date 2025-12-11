@@ -6,17 +6,13 @@ using System.Threading.Tasks;
 
 namespace Dto
 {
-    public class DtoUser_Name_Password_Gmail
+    public class DtoUser_Name_Gmail
     {
-
-
         public int UserId { get; set; }
         public string Gmail { get; set; }
 
         public string UserFirstName { get; set; }
 
         public string UserLastname { get; set; }
-
-        public string Password { get; set; }
     }
 }

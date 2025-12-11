@@ -23,9 +23,11 @@ namespace Services
         {
             return await _r.GetUsers();
         }
-        public async Task<User?> GetUserById(int id)
+        public async Task<DtoUser_Name_Gmail?> GetUserById(int id)
         {
-            return await _r.GetUserById(id);
+            var u = await _r.GetUserById(id);
+            var r= _mapper.Map<User, DtoUser_Name_Gmail>(u);
+            return r;
         }
 
         public async Task<DtoUser_Id_Name> AddNewUser(DtoUser_Name_Password_Gmail user)

@@ -31,9 +31,9 @@ namespace project1.Controllers
 
         // GET api/<users>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> Get(int id)
+        public async Task<ActionResult<DtoUser_Name_Gmail>> Get(int id)
         {
-           User user= await _s.GetUserById(id);
+            DtoUser_Name_Gmail user = await _s.GetUserById(id);
             if (user!=null)
             {
                 return Ok(user);

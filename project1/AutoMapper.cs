@@ -12,6 +12,7 @@ namespace Api
             CreateMap<User, DtoUser_Id_Name>().ReverseMap();
             CreateMap<PassWord, DtoPassword_Password_Strength>().ReverseMap();
             CreateMap<User, DtoUser_Name_Password_Gmail>().ReverseMap();
+            CreateMap<User, DtoUser_Name_Gmail>().ReverseMap();
         }
     }
 }
