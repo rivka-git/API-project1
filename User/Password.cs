@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public record PassWord
+    public class PassWord
     {
         public string? Password { get; set; }
         public int? Strength { get; set; }

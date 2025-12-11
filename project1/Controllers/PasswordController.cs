@@ -16,12 +16,12 @@ namespace Api.Controllers
             _p= ip;
         }
         
-        // GET api/<PasswordController>/5
-        [HttpGet("{id}")]
-        public DtoPassword_Password_Strength Get(PassWord p)
-        {
-            return _p.getStrengthByPassword(p);
-        }
+        //// GET api/<PasswordController>/5
+        //[HttpGet("{id}")]
+        //public DtoPassword_Password_Strength Get(PassWord p)
+        //{
+        //    return _p.getStrengthByPassword(p);
+        //}
 
         [HttpPost]
         

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Dto
 {
-    public class DtoPassword_Password_Strength
+    public class DtoUser_Id_Name
     {
-        public int? Strength { get; set; }
+        public string UserId { get; set; }
 
+        public string UserFirstName { get; set; }
     }
 }

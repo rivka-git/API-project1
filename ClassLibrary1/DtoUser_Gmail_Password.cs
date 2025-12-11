@@ -1,10 +1,10 @@
 ﻿namespace Dto
 {
-    public record DtoUser_Gmail_Password
+    public class DtoUser_Gmail_Password
     {
-        public string Gmail;
+        public string Gmail { get; set; }
 
-        public string Password;
+        public string Password { get; set; }
 
     }
 }

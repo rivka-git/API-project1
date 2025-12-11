@@ -28,7 +28,7 @@ namespace Services
             return await _r.GetUserById(id);
         }
 
-        public async Task<User> AddNewUser(User user)
+        public async Task<DtoUser_Id_Name> AddNewUser(DtoUser_Name_Password_Gmail user)
         {
             PassWord pp=new PassWord();
             pp.Password = user.Password;
@@ -36,16 +36,25 @@ namespace Services
             DtoPassword_Password_Strength d = _passwordService.getStrengthByPassword(pp);
             if (d.Strength >= 2)
             {
-                return await _r.AddNewUser(user);
+                var a =_mapper.Map<DtoUser_Name_Password_Gmail, User>(user);
+
+                var res = await _r.AddNewUser(a);
+                var DtoUser = _mapper.Map<User, DtoUser_Id_Name>( res);
+                return DtoUser;
             }
+
             return null;
         }
 
-        public async Task<User?> Login(User value)
+        public async Task<DtoUser_Id_Name?> Login(DtoUser_Gmail_Password value)
         {
-            return await _r.Login(value);
+            var a= _mapper.Map<DtoUser_Gmail_Password, User>(value);
+            var u = _r.Login(a);
+
+            var DtoUser = _mapper.Map<User, DtoUser_Id_Name>(await u);
+            return DtoUser;
         }
-        public async Task<User> update(int id, User user)
+        public async Task<DtoUser_Id_Name> update(int id, DtoUser_Name_Password_Gmail user)
         {
             PassWord pp = new PassWord();
             pp.Password = user.Password;
@@ -53,7 +62,11 @@ namespace Services
             DtoPassword_Password_Strength d = _passwordService.getStrengthByPassword(pp);
             if (d.Strength >= 2)
             {
-                return await _r.update(id, user);
+                var a = _mapper.Map<DtoUser_Name_Password_Gmail, User>(user);
+
+                var res = await _r.update(id,a);
+                var DtoUser = _mapper.Map<User, DtoUser_Id_Name>(res);
+                return DtoUser;
             }
             return null;
         }

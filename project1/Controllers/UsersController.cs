@@ -5,6 +5,7 @@ using System.Text.Json;
 using Services;
 using static project1.Controllers.Userscontroller;
 using Model;
+using Dto;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -42,10 +43,10 @@ namespace project1.Controllers
         // POST api/<users>
 
         [HttpPost]
-        public async Task<ActionResult<User>> Post([FromBody] User user)
+        public async Task<ActionResult<DtoUser_Id_Name>> Post([FromBody] DtoUser_Name_Password_Gmail user)
         {
 
-            User res = await _s.AddNewUser(user);
+            DtoUser_Id_Name res = await _s.AddNewUser(user);
             if (res!=null)
             {
                 return CreatedAtAction(nameof(Get), new { id = res.UserId }, res);
@@ -56,9 +57,9 @@ namespace project1.Controllers
 
         //POST
         [HttpPost("Login")]
-        public async Task<ActionResult<User>> Login([FromBody] User user)
+        public async Task<ActionResult<DtoUser_Id_Name>> Login([FromBody] DtoUser_Gmail_Password user)
         {
-            User res = await _s.Login(user);
+            DtoUser_Id_Name res = await _s.Login(user);
             if(res!=null)
             {
                 return Ok(res);
@@ -71,12 +72,12 @@ namespace project1.Controllers
 
         // PUT api/<users>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<User>> Put(int id, [FromBody] User value)
+        public async Task<ActionResult<DtoUser_Id_Name>> Put(int id, [FromBody] DtoUser_Name_Password_Gmail value)
         {
-            User res = await _s.update(id, value);
+            DtoUser_Id_Name res = await _s.update(id, value);
             if (res!= null)
             {
-                return CreatedAtAction(nameof(Get), new { id = value.UserId }, res);
+                return CreatedAtAction(nameof(Get), new { id = res.UserId }, res);
             }
             else
                 return BadRequest();  

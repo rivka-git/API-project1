@@ -1,14 +1,15 @@
-﻿using Model;
+﻿using Dto;
+using Model;
 
 namespace Services
 {
     public interface IUserServices
     {
-        Task<User> AddNewUser(User user);
+        Task<DtoUser_Id_Name> AddNewUser(DtoUser_Name_Password_Gmail user);
         void Delete(int id);
         Task<User?> GetUserById(int id);
         Task<IEnumerable<User>> GetUsers();
-        Task<User?> Login(User value);
-        Task<User> update(int id, User value);
+        Task<DtoUser_Id_Name?> Login(DtoUser_Gmail_Password value);
+        Task<DtoUser_Id_Name> update(int id, DtoUser_Name_Password_Gmail value);
     }
 }
